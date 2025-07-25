@@ -58,6 +58,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="google-site-verification" content="m430e2fTgc2fp0gSlvgXhAGSe-ZLiD5gKFmK2Q25ek4" />
+      </head>
       <body
         className='w-full flex flex-col items-center justify-start no-scrollbar overflow-y-scroll my-6 p-4 antialiased max-w-xl mx-auto'
       >
