@@ -1,103 +1,110 @@
-import Image from "next/image";
+import { products, SITE_DESCRIPTION, SITE_TITLE, socialLinks } from '@/app/data/index';
+import CurrentTime from '@/components/misc/current-time';
+import AvailabilityStatus from '@/components/misc/current-time';
+import Header from '@/components/misc/headers';
+import ProjectPopup from '@/components/misc/popup';
+import BaseHead from '@/components/seo/basehead';
+import { Badge } from '@/components/ui/badge';
+import TechStackMarquee from '@/components/ui/tech-stack-marquee';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+
+import Image from 'next/image';
+import Link from 'next/link';
+
+
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <>
+
+      {/* Only use basehead if you need Analytics like umami or microsoft clarity */}
+      {/* <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} image='/images/ogimage.png' /> */}
+
+      <div className=''>
+        <div id='navbar+title' className=' flex flex-col w-full gap-5.5 sm:gap-5 max-w-xl lowercase'>
+
+          {/* NAV  */}
+          <Header />
+
+          {/* TITLE */}
+          <h1 className='w-full text-start text-[min(12vw,72px)] font-medium leading-[0.9] tracking-[-2px] sm:tracking-[-4px]'>
+            hey, i&#39;m vinesh<br />
+            <span className='text-gray-500 dark:text-gray-400'>developer builder</span>
+          </h1>
+
+          <Badge variant="outline" className="flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+            Available for work
+          </Badge>
+
+          {/* ABOUT */}
+          <main id='about' className='flex flex-col gap-4 '>
+
+            {/* description  */}
+            <section className='font-medium text-lg text-gray-700 dark:text-gray-400'>
+              I&rsquo;m a 19-year-old developer — disciplined, focused, and driven to build, innovate, and make great things happen.
+            </section>
+
+            {/* banner */}
+            <section className="relative h-12 w-full overflow-hidden">
+              <TechStackMarquee />
+            </section>
+
+            {/* projects */}
+            <section className=' font-medium text-lg text-gray-700 dark:text-gray-300'>
+              i built projects like
+              <div className=' flex flex-wrap gap-2 mt-5'>
+                {
+                  products.map((product) => (
+                    <div key={product.id} className='' >
+                      <ProjectPopup name={product.name} liveurl={product.liveurl} githuburl={product.githuburl} image={product.image} popupImage={product.popupImage} description={product.description} tech={product.tech} status={product.status} />
+                    </div>
+                  ))
+                }
+              </div>
+            </section>
+
+            <section className='font-medium text-lg text-gray-700 dark:text-gray-400'>
+              I am open to internships, projects, or just connecting.
+            </section>
+
+            <section className='font-medium text-lg text-gray-700 dark:text-gray-400'>
+              Feel free to reach out — {" "}
+              <Tooltip>
+                <Link
+                  href="mailto:vineshrajkumar23@gmail.com?subject=Let's%20chat&body=Hey%20Vinesh,%20I%20saw%20your%20portfolio..."
+                  target='_blank'
+                >
+                  <TooltipTrigger className='underline underline-offset-2'>send a email</TooltipTrigger>
+                  <TooltipContent> <p>vineshrajkumar23@gmail.com</p> </TooltipContent>
+                </Link>
+              </Tooltip>
+            </section>
+
+
+          </main>
+
+          {/* social links  */}
+          <footer
+            id='social-links'
+            className='flex max-[410px]:flex-col max-[410px]:gap-3 justify-between items-center '>
+            <div className="flex flex-wrap gap-4">
+              {
+                socialLinks.map((link) => (
+                  <Link
+                    key={link.url}
+                    href={link.url}
+                    className='text-lg font-medium text-gray-700 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:underline underline-offset-2'>
+                    {link.label}
+                  </Link>
+                ))
+              }
+            </div>
+            <CurrentTime />
+          </footer>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </>
   );
 }
