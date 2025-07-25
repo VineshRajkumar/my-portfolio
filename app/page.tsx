@@ -1,14 +1,14 @@
-import { products, SITE_DESCRIPTION, SITE_TITLE, socialLinks } from '@/app/data/index';
+import { products, socialLinks } from '@/app/data/index';
 import CurrentTime from '@/components/misc/current-time';
-import AvailabilityStatus from '@/components/misc/current-time';
+// import AvailabilityStatus from '@/components/misc/current-time';
 import Header from '@/components/misc/headers';
 import ProjectPopup from '@/components/misc/popup';
-import BaseHead from '@/components/seo/basehead';
+// import BaseHead from '@/components/seo/basehead';
 import { Badge } from '@/components/ui/badge';
 import TechStackMarquee from '@/components/ui/tech-stack-marquee';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
 
 

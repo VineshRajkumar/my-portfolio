@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { EyeIcon, Heart, Info, Star } from 'lucide-react'
-import { StarIcon, ThumbsUpIcon } from 'lucide-react'
+// import { StarIcon, ThumbsUpIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import * as homepageActions from '@/app/actions/homepage-action'
 import Link from 'next/link'

@@ -17,9 +17,9 @@ import {
     SiRedux,
     SiZod,
 
-    SiVercel,
+    // SiVercel,
     SiPuppeteer,
-    SiGithub,
+    // SiGithub,
     SiShadcnui,
     SiPostman,
     SiTurborepo,

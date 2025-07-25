@@ -5,12 +5,12 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogOverlay,
-  DialogPortal,
+  // DialogOverlay,
+  // DialogPortal,
   DialogTitle,
   DialogTrigger
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
