@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import '@/app/styles/globals.css'
 import { ThemeProvider } from "@/components/misc/theme-provider";
 import { description, image, title, url } from "./data";
+import { Analytics } from "@vercel/analytics/next"
 
 
 export const metadata: Metadata = {
@@ -64,13 +65,14 @@ export default function RootLayout({
       <body
         className='w-full flex flex-col items-center justify-start no-scrollbar overflow-y-scroll my-6 p-4 antialiased max-w-xl mx-auto'
       >
-         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
