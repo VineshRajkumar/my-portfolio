@@ -17,8 +17,12 @@ import Image from "next/image";
 import { techStack } from "../ui/tech-stack-marquee";
 import { Badge } from "../ui/badge";
 import StatusBadge from "./status-badge";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { Skeleton } from "../ui/skeleton";
 
 export default function ProjectPopup({ name, liveurl, githuburl, image, popupImage, description, tech = [], status = ["In Progress"] }: { name: string, liveurl?: string, githuburl?: string, image: string, popupImage: string, description: string, tech?: string[], status?: string[] }) {
+  const [loading, setLoading] = useState(true);
   return (
 
     <Dialog modal={false}>
@@ -40,14 +44,23 @@ export default function ProjectPopup({ name, liveurl, githuburl, image, popupIma
 
       <DialogContent className="sm:max-w-md " overlayClasses="fixed inset-0 z-50 bg-black/50 backdrop-blur-[1px]  transition-opacity animate-fade-in" >
 
-        <div className="w-full mb-1 mt-3">
+        <div className="w-full mb-1 mt-3 relative">
+          {loading && (
+        <Skeleton className="absolute inset-0 w-full max-h-60 rounded-md" />
+      )}
+
+       
           <Image
             src={popupImage}
             alt={`Preview of ${name}`}
             width={600}
             height={350}
-            className="rounded-md border shadow-sm object-cover w-full max-h-60"
+            className={cn(
+          "rounded-md border shadow-sm object-cover w-full max-h-60 transition-opacity duration-300",
+          loading ? "opacity-0" : "opacity-100"
+        )}
             unoptimized={popupImage.endsWith('.gif')}
+            onLoadingComplete={() => setLoading(false)}
           />
         </div>
 
