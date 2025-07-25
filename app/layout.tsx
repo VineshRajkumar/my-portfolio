@@ -18,6 +18,11 @@ export const metadata: Metadata = {
     canonical: "/",
   },
 
+  //for favicon
+  icons: {
+    icon: "/favicon.ico",
+  },
+
   // Open Graph -  If site is shared in facebook,linkdin then site should look like this
   openGraph: {
     title: title,
