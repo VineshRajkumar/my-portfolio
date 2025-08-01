@@ -17,10 +17,7 @@ export default function Home() {
 
   return (
     <>
-
-      {/* Only use basehead if you need Analytics like umami or microsoft clarity */}
-      {/* <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} image='/images/ogimage.png' /> */}
-
+    
       <div className=''>
         <div id='navbar+title' className=' flex flex-col w-full gap-5.5 sm:gap-5 max-w-xl lowercase'>
 
