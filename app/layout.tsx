@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
 import '@/app/styles/globals.css'
 import { ThemeProvider } from "@/components/misc/theme-provider";
-import { description, image, title, url } from "./data";
+import { description, image, seo, title, url } from "./data";
 import { Analytics } from "@vercel/analytics/next"
 
 
 export const metadata: Metadata = {
 
   //display title and description when searched in google
-  title: title,
+  title: {
+    default: title,
+    template: `%s | ${title}`
+  },
   description: description,
+  keywords: seo.keywords,
+  authors: seo.authors,
+  creator: seo.authors[0].name,
 
   // Canonical URL - sets main version of page -> each page will have different canonicalURL / ,/about like that
   metadataBase: new URL(url),
@@ -21,7 +26,19 @@ export const metadata: Metadata = {
 
   //for favicon
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icons/favicon.ico" }, // default
+      { url: "/icons/favicon.png", type: "image/png" },
+      { url: "/icons/favicon.svg", type: "image/svg+xml" },
+      { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/icon0.svg", type: "image/svg+xml" },
+      { url: "/icons/icon1.png", type: "image/png" },
+    ],
+    apple: [
+      { url: "/icons/apple-icon.png" },
+      { url: "/icons/apple-touch-icon.png" },
+    ],
   },
 
   // Open Graph -  If site is shared in facebook,linkdin then site should look like this
@@ -39,6 +56,7 @@ export const metadata: Metadata = {
       },
     ],
     type: "website",
+    locale: "en_US",
   },
 
   // Twitter - when someone shares site in twitter then site should look like this
@@ -47,6 +65,7 @@ export const metadata: Metadata = {
     title: title,
     description: description,
     images: [image],
+    creator: seo.twitterHandle,
   },
 
 };
@@ -61,6 +80,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="m430e2fTgc2fp0gSlvgXhAGSe-ZLiD5gKFmK2Q25ek4" />
+        <meta name="apple-mobile-web-app-title" content="Vinesh Raj" />
       </head>
       <body
         className='w-full flex flex-col items-center justify-start no-scrollbar overflow-y-scroll my-6 p-4 antialiased max-w-xl mx-auto'
