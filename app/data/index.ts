@@ -245,8 +245,8 @@ export const products = [
   {
     id: 1,
     name: "Orange",
-    // liveurl: "", //update once ready
-    // githuburl:'',  //update once ready
+    liveurl: "https://orangeboard.vercel.app/", 
+    githuburl: "https://github.com/VineshRajkumar/orange",  
     description:
       "A collaborative whiteboard app like Excalidraw, built with real-time drawing, multi-user editing via WebSocket, and a responsive, modern UI. Designed as a full SaaS product with focus on scalability, UX, and SEO.",
     popupImage: "/products/orange.gif",
@@ -263,7 +263,7 @@ export const products = [
       "Node.js",
       "Express.js",
     ],
-    status: ["In Progress"],
+    status: ["Completed"],
   },
   {
     id: 2,
@@ -337,7 +337,7 @@ export const socialLinks = [
   },
   {
     label: "resume",
-    url: "https://drive.google.com/file/d/1SrdYCR_IPJK5Qf9TiZca_QsQin9WcBO6/view",
+    url: "https://drive.google.com/file/d/1T6fpCqc-Fxneirj8s3HSourscv9E5wEi/view?usp=sharing",
   },
   {
     label: "github",
