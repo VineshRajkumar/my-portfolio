@@ -249,7 +249,7 @@ export const products = [
     githuburl: "https://github.com/VineshRajkumar/orange",  
     description:
       "A collaborative whiteboard app like Excalidraw, built with real-time drawing, multi-user editing via WebSocket, and a responsive, modern UI. Designed as a full SaaS product with focus on scalability, UX, and SEO.",
-    popupImage: "/products/orange.gif",
+    popupImage: "/products/orangeLandingPage.webm",
     image: "/products/orangelogo.png",
     tech: [
       "Next.js",

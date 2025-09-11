@@ -46,22 +46,39 @@ export default function ProjectPopup({ name, liveurl, githuburl, image, popupIma
 
         <div className="w-full mb-1 mt-3 relative">
           {loading && (
-        <Skeleton className="absolute inset-0 w-full max-h-60 rounded-md" />
-      )}
+            <Skeleton className="absolute inset-0 w-full max-h-60 rounded-md" />
+          )}
 
-       
-          <Image
-            src={popupImage}
-            alt={`Preview of ${name}`}
-            width={600}
-            height={350}
-            className={cn(
-          "rounded-md border shadow-sm object-cover w-full max-h-60 transition-opacity duration-300",
-          loading ? "opacity-0" : "opacity-100"
-        )}
-            unoptimized={popupImage.endsWith('.gif')}
-            onLoadingComplete={() => setLoading(false)}
-          />
+
+          {popupImage.match(/\.(webm|mp4|ogg)$/i) ? (
+            <video
+              src={popupImage}
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls={false}
+              preload="auto"
+              className={cn(
+                "rounded-md border shadow-sm object-cover w-full max-h-60 transition-opacity duration-300",
+                loading ? "opacity-0" : "opacity-100"
+              )}
+              onLoadedData={() => setLoading(false)}
+            />
+          ) : (
+            <Image
+              src={popupImage}
+              alt={`Preview of ${name}`}
+              width={600}
+              height={350}
+              className={cn(
+                "rounded-md border shadow-sm object-cover w-full max-h-60 transition-opacity duration-300",
+                loading ? "opacity-0" : "opacity-100"
+              )}
+              unoptimized={popupImage.endsWith('.gif')}
+              onLoadingComplete={() => setLoading(false)}
+            />
+          )}
         </div>
 
         <DialogHeader>
