@@ -337,7 +337,7 @@ export const socialLinks = [
   },
   {
     label: "resume",
-    url: "https://drive.google.com/file/d/1T6fpCqc-Fxneirj8s3HSourscv9E5wEi/view?usp=sharing",
+    url: "https://drive.google.com/file/d/1DSpzzeEJ60puWyeodTUH0EE5gZTo1qLn/view?usp=sharing",
   },
   {
     label: "github",
